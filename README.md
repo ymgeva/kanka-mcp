@@ -19,9 +19,8 @@ All create and update operations properly handle HTML content for description fi
 ### Prerequisites
 
 - Python 3.10+
-- [UV](https://github.com/astral-sh/uv) - A fast Python package installer and resolver
 
-### Installation with UV
+### Installation
 
 1. Clone this repository:
    ```
@@ -29,14 +28,14 @@ All create and update operations properly handle HTML content for description fi
    cd kanka_mcp
    ```
 
-2. Install dependencies with UV:
+2. Install dependencies:
    ```
-   uv pip install -r requirements.txt
+   pip install requests mcp[cli]
    ```
 
    Or if you have a pyproject.toml file:
    ```
-   uv pip install .
+   pip install .
    ```
 
 ### Configuration
@@ -63,24 +62,15 @@ Run the server directly with:
 python kanka_mcp.py
 ```
 
-Or using UV:
-
-```bash
-uv run kanka_mcp.py
-```
-
 ### Adding to MCP Server Configuration
 
 Add the following to your MCP server configuration:
 
 ```json
 "kanka": {
-    "command": "uv",
+    "command": "python",
     "args": [
-        "--directory",
-        "FULL_PATH_TO_SCRIPT_FOLDER",
-        "run",
-        "kanka_mcp.py"
+        "FULL_PATH_TO_SCRIPT_FOLDER/kanka_mcp.py"
     ],
     "env": {
         "KANKA_API_KEY": "YOUR_KANKA_API_KEY"
