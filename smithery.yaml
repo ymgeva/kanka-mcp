@@ -1,0 +1,20 @@
+# Smithery.ai configuration
+startCommand:
+  type: stdio
+  configSchema:
+    type: "object"
+    properties:
+      KANKA_API_KEY:
+        type: "string"
+        description: "Your Kanka API key, obtained from your Kanka account settings"
+    required: ["KANKA_API_KEY"]
+  commandFunction: |-
+    (config) => ({
+      "command": "python",
+      "args": [
+        "kanka_mcp.py"
+      ],
+      "env": {
+        "KANKA_API_KEY": config.KANKA_API_KEY
+      }
+    })
